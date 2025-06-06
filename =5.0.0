@@ -1,0 +1,9 @@
+Collecting urllib3<2.0
+  Downloading urllib3-1.26.20-py2.py3-none-any.whl (144 kB)
+Requirement already satisfied: chardet in /usr/lib/python3/dist-packages (3.0.4)
+Installing collected packages: urllib3
+  Attempting uninstall: urllib3
+    Found existing installation: urllib3 2.2.3
+    Uninstalling urllib3-2.2.3:
+      Successfully uninstalled urllib3-2.2.3
+Successfully installed urllib3-1.26.20
