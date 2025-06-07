@@ -28,9 +28,10 @@
 #
 # Copyright (c) 2021 ETH Zurich, Nikita Rudin
 import sys
+print(sys.path)
 # 移除指定路径（示例：删除路径 '/wrong/path'）
-sys.path.remove('/home/xihan/projects/legged_robot/isaacgym/python')
-
+#sys.path.remove('/home/xihan/projects/legged_robot/isaacgym/python')
+'''
 import debugpy
 try:
     debugpy.listen(('localhost', 9501))
@@ -39,7 +40,7 @@ try:
 except Exception as e:
     print(f"An error occurred: {e}")
     pass
-
+'''
 import numpy as np
 import os
 from datetime import datetime
@@ -54,7 +55,7 @@ import torch
 #os.environ["WANDB_MODE"] = "offline"   # 离线  （此行代码不用修改）
 
 def train(args):
-    args.headless = False
+    args.headless = True
     # args.proj_name = "extreme_parkour_a1_test"
     # args.exptid = "327-22-53"
     log_pth = LEGGED_GYM_ROOT_DIR + "/logs/{}/".format(args.proj_name) + args.exptid

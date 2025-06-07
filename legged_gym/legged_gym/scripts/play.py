@@ -27,12 +27,7 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 # Copyright (c) 2021 ETH Zurich, Nikita Rudin
-import sys
-# 打印当前路径，定位错误路径
-print(sys.path)
-# 移除指定路径（示例：删除路径 '/wrong/path'）
-if '/home/xihan/projects/legged_robot/isaacgym/python' in sys.path:
-    sys.path.remove('/home/xihan/projects/legged_robot/isaacgym/python')
+
 from legged_gym import LEGGED_GYM_ROOT_DIR
 import os
 import code

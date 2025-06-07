@@ -1,0 +1,1 @@
+python legged_gym/legged_gym/scripts/play.py --num_envs=1 --proj_name parkour_A100 --exptid 607-02-16

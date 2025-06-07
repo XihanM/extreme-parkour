@@ -1151,22 +1151,21 @@ class LeggedRobot(BaseTask):
 
     def _parse_cfg(self, cfg):
         self.dt = self.cfg.control.decimation * self.sim_params.dt
-        self.obs_scales = self.cfg.normalization.obs_scales
-        self.reward_scales = class_to_dict(self.cfg.rewards.scales)
-        reward_norm_factor = 1#np.sum(list(self.reward_scales.values()))
+        self.obs_scales = self.cfg.normalization.obs_scales  #对角速度、关节位置、关节速度、高度测量的观测值进行归一化处理
+        self.reward_scales = class_to_dict(self.cfg.rewards.scales)    #奖励权重
+        reward_norm_factor = 1#np.sum(list(self.reward_scales.values()))   奖励归一化
         for rew in self.reward_scales:
             self.reward_scales[rew] = self.reward_scales[rew] / reward_norm_factor
         if self.cfg.commands.curriculum:
-            self.command_ranges = class_to_dict(self.cfg.commands.ranges)
+            self.command_ranges = class_to_dict(self.cfg.commands.ranges)    #对速度角度范围要求更高、难
         else:
-            self.command_ranges = class_to_dict(self.cfg.commands.max_ranges)
+            self.command_ranges = class_to_dict(self.cfg.commands.max_ranges)   #简单
         if self.cfg.terrain.mesh_type not in ['heightfield', 'trimesh']:
             self.cfg.terrain.curriculum = False
         self.max_episode_length_s = self.cfg.env.episode_length_s
-        self.max_episode_length = np.ceil(self.max_episode_length_s / self.dt)
+        self.max_episode_length = np.ceil(self.max_episode_length_s / self.dt)   #理论上最多步数=一个 episode 的最大时间长度/仿真或控制的时间步长 ​​np.ceil(...)​​向上取整
 
-        self.cfg.domain_rand.push_interval = np.ceil(self.cfg.domain_rand.push_interval_s / self.dt)
-
+        self.cfg.domain_rand.push_interval = np.ceil(self.cfg.domain_rand.push_interval_s / self.dt)    
     def _draw_height_samples(self):
         """ Draws visualizations for dubugging (slows down simulation a lot).
             Default behaviour: draws height measurement points
