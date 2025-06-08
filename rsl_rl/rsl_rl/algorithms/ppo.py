@@ -34,7 +34,7 @@ import torch.optim as optim
 
 from rsl_rl.modules import ActorCriticRMA
 from rsl_rl.storage import RolloutStorage
-#import wandb
+import wandb
 from rsl_rl.utils import unpad_trajectories
 
 
